@@ -20,7 +20,10 @@
   gap: 8px;
   height: 32px;
   padding: 0 14px;
-  border-radius: var(--r-pill);
+  border-radius: var(--r-chip);
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
   background: var(--card);
   color: var(--muted);
   font-size: 0.8rem;

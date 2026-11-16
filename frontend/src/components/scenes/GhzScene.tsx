@@ -96,7 +96,7 @@ export function GhzScene() {
                   textAnchor="middle"
                   fontSize={14}
                   fontWeight={700}
-                  fill="var(--accent)"
+                  fill="var(--accent-text)"
                   className={s.mono}
                   initial={{ opacity: 0, translateY: 7 }}
                   animate={{ opacity: 1, translateY: 0 }}

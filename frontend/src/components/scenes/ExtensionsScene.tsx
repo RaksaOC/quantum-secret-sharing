@@ -165,7 +165,7 @@ function Liar() {
       <div style={{ display: "flex", gap: 14 }}>
         {["Maya", "Dara", "Lina"].map((n, i) => (
           <div key={n} style={{ display: "grid", justifyItems: "center", gap: 4 }}>
-            <motion.span className={s.avatar} animate={{ backgroundColor: i === 1 && t >= 1 ? "var(--bad)" : "var(--card)", color: i === 1 && t >= 1 ? "#fff" : "var(--ink)" }}>
+            <motion.span className={s.avatar} animate={{ backgroundColor: i === 1 && t >= 1 ? "var(--bad)" : "var(--card)", color: i === 1 && t >= 1 ? "var(--bg)" : "var(--ink)" }}>
               {n[0]}
             </motion.span>
             <span style={{ fontSize: "0.72rem", color: i === 1 && t >= 1 ? "var(--bad)" : "var(--muted)" }}>{i === 1 && t >= 1 ? "says Y, used X" : n}</span>

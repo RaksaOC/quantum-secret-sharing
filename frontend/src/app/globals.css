@@ -1,96 +1,12 @@
-/* Quiet Gallery: calm space, soft greys and one blue.
-   Tokens taken from the study hub's "gallery" look (study-hub/public/themes.css). */
+/* Base styles shared by every look. Colours, fonts and radii come from the active theme
+   in src/theme/<look>.css, picked by data-look on <html> (see src/theme/config.ts). */
+@import "../theme/gallery.css";
+@import "../theme/deep-lab.css";
 
 :root {
-  --f-display: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-  --f-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-
-  --fs: 17px;
-  --lh: 1.5;
-  --track: -0.012em;
-  --h1: clamp(2.4rem, 5.4vw, 3.5rem);
-  --h2: clamp(1.9rem, 4vw, 2.5rem);
   --h3: clamp(1.3rem, 2.4vw, 1.6rem);
-
-  --r-card: 18px;
-  --r-in: 11px;
-  --r-pill: 9999px;
   --r-code: 5px;
-  --pop: 3px 5px 30px rgba(0, 0, 0, 0.14);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* light */
-  --bg: #ffffff;
-  --card: #f5f5f7;
-  --surface-2: #ececf0;
-  --faint: #e8e8ed;
-  --line: #e0e0e0;
-  --ctl: #b4b4ba;
-  --ink: #1d1d1f;
-  --body: #1d1d1f;
-  --muted: #6a6a6f;
-  --dim: #d2d2d7;
-  --accent: #0066cc;
-  --accent-ink: #ffffff;
-  --accent-soft: rgba(0, 102, 204, 0.1);
-  --accent-mid: rgba(0, 102, 204, 0.45);
-  --code-bg: #ededf0;
-  --ok: #1a7f37;
-  --ok-soft: rgba(26, 127, 55, 0.1);
-  --bad: #c62828;
-  --bad-soft: rgba(198, 40, 40, 0.1);
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-  --bg: #000000;
-  --card: #1d1d1f;
-  --surface-2: #272729;
-  --faint: #2f2f31;
-  --line: #38383a;
-  --ctl: #6e6e73;
-  --ink: #ffffff;
-  --body: #f5f5f7;
-  --muted: #a1a1a6;
-  --dim: #48484a;
-  --accent: #2997ff;
-  --accent-ink: #000000;
-  --accent-soft: rgba(41, 151, 255, 0.14);
-  --accent-mid: rgba(41, 151, 255, 0.5);
-  --code-bg: #272729;
-  --ok: #4cc764;
-  --ok-soft: rgba(76, 199, 100, 0.14);
-  --bad: #ff6b60;
-  --bad-soft: rgba(255, 107, 96, 0.14);
-  --pop: 3px 5px 30px rgba(0, 0, 0, 0.6);
-  color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #000000;
-    --card: #1d1d1f;
-    --surface-2: #272729;
-    --faint: #2f2f31;
-    --line: #38383a;
-    --ctl: #6e6e73;
-    --ink: #ffffff;
-    --body: #f5f5f7;
-    --muted: #a1a1a6;
-    --dim: #48484a;
-    --accent: #2997ff;
-    --accent-ink: #000000;
-    --accent-soft: rgba(41, 151, 255, 0.14);
-    --accent-mid: rgba(41, 151, 255, 0.5);
-    --code-bg: #272729;
-    --ok: #4cc764;
-    --ok-soft: rgba(76, 199, 100, 0.14);
-    --bad: #ff6b60;
-    --bad-soft: rgba(255, 107, 96, 0.14);
-    --pop: 3px 5px 30px rgba(0, 0, 0, 0.6);
-    color-scheme: dark;
-  }
 }
 
 *,
@@ -121,8 +37,9 @@ h2,
 h3 {
   font-family: var(--f-display);
   color: var(--ink);
-  font-weight: 600;
-  line-height: 1.08;
+  font-weight: var(--dw);
+  letter-spacing: var(--d-track);
+  line-height: 1.06;
   margin: 0;
 }
 

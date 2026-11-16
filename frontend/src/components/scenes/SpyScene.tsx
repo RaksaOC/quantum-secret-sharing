@@ -117,7 +117,7 @@ function Channel({ eve }: { eve: boolean }) {
         {eve && (
           <motion.g key="eve" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
             <circle cx={220} cy={30} r={19} fill="var(--bad)" />
-            <text x={220} y={34} textAnchor="middle" fontSize={11} fontWeight={700} fill="#fff">
+            <text x={220} y={34} textAnchor="middle" fontSize={11} fontWeight={700} fill="var(--bg)">
               Eve
             </text>
           </motion.g>

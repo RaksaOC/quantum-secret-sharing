@@ -45,7 +45,7 @@
 }
 .chipAccent {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .chipOk {
   background: var(--ok-soft);
@@ -140,7 +140,7 @@
     box-shadow 0.35s var(--ease);
 }
 .holderOn {
-  border-color: var(--accent);
+  border-color: var(--accent-text);
   box-shadow: var(--pop);
 }
 .avatar {
@@ -193,7 +193,7 @@
 }
 .vaultOpen {
   background: var(--ok);
-  color: #fff;
+  color: var(--bg);
 }
 
 /* ---------- Today ---------- */
@@ -336,7 +336,7 @@
 }
 .bitOne {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .xor {
   justify-self: end;
@@ -422,7 +422,7 @@
 }
 .basisY {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .dropped td {
   opacity: 0.45;
@@ -521,7 +521,7 @@
 .sideTitle {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 10px;
 }
 .hexRow {
@@ -622,7 +622,7 @@
   opacity: 0.55;
 }
 .toggle[aria-pressed="true"] {
-  border-color: var(--accent);
+  border-color: var(--accent-text);
 }
 .toggle[aria-pressed="true"] .avatar {
   background: var(--accent);
@@ -634,7 +634,7 @@
   color: var(--muted);
 }
 .toggle[aria-pressed="true"] .check {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .result {
   border-radius: 14px;
@@ -700,7 +700,7 @@
   background: var(--accent-soft);
 }
 .cmp th.qCol {
-  color: var(--accent);
+  color: var(--accent-text);
   border-radius: 10px 10px 0 0;
 }
 .yes {
@@ -722,7 +722,7 @@
   color: var(--ink);
 }
 .honest b {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 /* ---------- Extensions ---------- */
@@ -858,7 +858,7 @@
   font-family: var(--f-mono);
   font-size: 0.68rem;
   color: var(--muted);
-  background: var(--card);
+  background: var(--stage);
   padding: 0 8px;
 }
 .packet {
@@ -915,4 +915,38 @@
   .keySegGhost {
     width: 44px;
   }
+}
+
+/* ---------- Theme hooks: mono labels, chip radius (Deep Lab) ---------- */
+.chip,
+.verdict,
+.vault,
+.hint {
+  border-radius: var(--r-chip);
+}
+.chip,
+.panelTitle,
+.sideTitle,
+.keyLabel,
+.size,
+.table th,
+.cmp th,
+.connLabel,
+.layerHead span {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+}
+.chip {
+  font-size: calc(0.8rem * var(--label-scale));
+}
+.panelTitle,
+.sideTitle,
+.keyLabel {
+  font-size: calc(0.76rem * var(--label-scale));
+}
+.layerHead strong,
+.extDetail h3 {
+  font-family: var(--f-display);
+  font-weight: 500;
 }

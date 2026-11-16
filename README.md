@@ -40,7 +40,8 @@ Or run them separately with `make backend` and `make frontend`. Tests: `make tes
 
 ```
 frontend/                      Next.js 16 (App Router) + motion
-  src/app/                     layout, page, Quiet Gallery theme (globals.css)
+  src/app/                     layout, page, base styles (globals.css)
+  src/theme/                   looks: deep-lab.css (active), gallery.css; switch in config.ts
   src/content/steps.ts         tour copy, one entry per step
   src/components/onboarding/   tour shell: copy, stage, progress rail, keyboard nav
   src/components/scenes/       one animated scene per step

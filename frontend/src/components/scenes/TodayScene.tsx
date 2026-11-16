@@ -54,7 +54,7 @@ export function TodayScene() {
           </text>
           <motion.g initial={{ y: 0, opacity: 0 }} animate={{ y: [0, 0, 64, 64], opacity: [0, 0.9, 0.9, 0] }} transition={{ ...LOOP, times: [0, 0.48, 0.78, 1] }}>
             <rect x={205} y={47} width={30} height={18} rx={5} fill="none" stroke="var(--accent)" strokeDasharray="3 2" strokeWidth={1.5} />
-            <text x={220} y={60} textAnchor="middle" fontSize={10} fontWeight={700} fill="var(--accent)">
+            <text x={220} y={60} textAnchor="middle" fontSize={10} fontWeight={700} fill="var(--accent-text)">
               k₁
             </text>
           </motion.g>

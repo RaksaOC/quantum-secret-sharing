@@ -1,0 +1,104 @@
+/* Quiet Gallery: calm space, soft greys and one blue (study hub "gallery" look). */
+
+:root[data-look="gallery"] {
+  --f-display: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--font-inter), sans-serif;
+  --f-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), sans-serif;
+  --f-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  --f-label: var(--f-body);
+  --label-tt: none;
+  --label-track: normal;
+  --label-scale: 1;
+
+  --fs: 17px;
+  --lh: 1.5;
+  --track: -0.012em;
+  --dw: 600;
+  --d-track: -0.012em;
+  --h1: clamp(2.4rem, 5.4vw, 3.5rem);
+  --h2: clamp(1.9rem, 4vw, 2.5rem);
+
+  --r-card: 18px;
+  --r-in: 11px;
+  --r-chip: 9999px;
+  --r-pill: 9999px;
+
+  --bg: #ffffff;
+  --stage: #f5f5f7;
+  --card: #f5f5f7;
+  --surface-2: #ececf0;
+  --faint: #e8e8ed;
+  --line: #e0e0e0;
+  --ctl: #b4b4ba;
+  --ink: #1d1d1f;
+  --body: #1d1d1f;
+  --muted: #6a6a6f;
+  --dim: #d2d2d7;
+  --accent: #0066cc;
+  --accent-text: #0066cc;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(0, 102, 204, 0.1);
+  --accent-mid: rgba(0, 102, 204, 0.45);
+  --btn-bg: var(--accent);
+  --btn-ink: var(--accent-ink);
+  --code-bg: #ededf0;
+  --ok: #1a7f37;
+  --ok-soft: rgba(26, 127, 55, 0.1);
+  --bad: #c62828;
+  --bad-soft: rgba(198, 40, 40, 0.1);
+  --pop: 3px 5px 30px rgba(0, 0, 0, 0.14);
+  color-scheme: light;
+}
+
+:root[data-look="gallery"][data-theme="dark"] {
+  --bg: #000000;
+  --stage: #1d1d1f;
+  --card: #1d1d1f;
+  --surface-2: #272729;
+  --faint: #2f2f31;
+  --line: #38383a;
+  --ctl: #6e6e73;
+  --ink: #ffffff;
+  --body: #f5f5f7;
+  --muted: #a1a1a6;
+  --dim: #48484a;
+  --accent: #2997ff;
+  --accent-text: #2997ff;
+  --accent-ink: #000000;
+  --accent-soft: rgba(41, 151, 255, 0.14);
+  --accent-mid: rgba(41, 151, 255, 0.5);
+  --code-bg: #272729;
+  --ok: #4cc764;
+  --ok-soft: rgba(76, 199, 100, 0.14);
+  --bad: #ff6b60;
+  --bad-soft: rgba(255, 107, 96, 0.14);
+  --pop: 3px 5px 30px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-look="gallery"]:not([data-theme="light"]) {
+    --bg: #000000;
+    --stage: #1d1d1f;
+    --card: #1d1d1f;
+    --surface-2: #272729;
+    --faint: #2f2f31;
+    --line: #38383a;
+    --ctl: #6e6e73;
+    --ink: #ffffff;
+    --body: #f5f5f7;
+    --muted: #a1a1a6;
+    --dim: #48484a;
+    --accent: #2997ff;
+    --accent-text: #2997ff;
+    --accent-ink: #000000;
+    --accent-soft: rgba(41, 151, 255, 0.14);
+    --accent-mid: rgba(41, 151, 255, 0.5);
+    --code-bg: #272729;
+    --ok: #4cc764;
+    --ok-soft: rgba(76, 199, 100, 0.14);
+    --bad: #ff6b60;
+    --bad-soft: rgba(255, 107, 96, 0.14);
+    --pop: 3px 5px 30px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}

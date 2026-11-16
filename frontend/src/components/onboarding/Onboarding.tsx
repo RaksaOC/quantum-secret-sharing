@@ -116,7 +116,7 @@ function Tour({ initial }: { initial: number }) {
         </main>
 
         <footer className={styles.footer}>
-          <nav className={styles.rail} aria-label="Tour steps">
+          <nav className={styles.rail} style={{ gridTemplateColumns: `repeat(${STEPS.length}, minmax(0, 1fr))` }} aria-label="Tour steps">
             {STEPS.map((s, i) => (
               <button
                 key={s.id}

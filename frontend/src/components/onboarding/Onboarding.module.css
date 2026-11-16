@@ -47,7 +47,7 @@
   justify-content: center;
 }
 .eyebrow {
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 14px;
@@ -108,7 +108,7 @@
   padding: 7px 14px;
   border-radius: var(--r-pill);
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.86rem;
   font-weight: 600;
 }
@@ -263,4 +263,35 @@
     padding-top: 12px;
     border-top: 1px solid var(--line);
   }
+}
+
+/* ---------- Theme hooks ---------- */
+.brand {
+  font-family: var(--f-display);
+  font-weight: 500;
+}
+.eyebrow,
+.hint,
+.railLabel,
+.counter {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+}
+.eyebrow {
+  font-size: calc(0.9rem * var(--label-scale));
+}
+.hint {
+  border-radius: var(--r-chip);
+  font-size: calc(0.86rem * var(--label-scale));
+}
+.railLabel {
+  font-size: calc(0.74rem * var(--label-scale));
+}
+.stage {
+  background: var(--stage);
+}
+.primaryBtn {
+  background: var(--btn-bg);
+  color: var(--btn-ink);
 }

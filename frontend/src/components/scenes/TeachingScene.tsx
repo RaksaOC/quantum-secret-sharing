@@ -87,7 +87,7 @@ export function TeachingScene() {
                   </span>
                 ))}
                 <span className={s.xor}>
-                  {bits.join(" ⊕ ")} = <b style={{ color: "var(--accent)" }}>{secret}</b>
+                  {bits.join(" ⊕ ")} = <b style={{ color: "var(--accent-text)" }}>{secret}</b>
                 </span>
               </motion.div>
             );
