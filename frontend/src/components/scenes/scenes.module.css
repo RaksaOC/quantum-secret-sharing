@@ -1,0 +1,918 @@
+/* Shared building blocks for every scene on the stage. */
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.svg text {
+  font-family: var(--f-body);
+}
+
+.caption {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.chipAccent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.chipOk {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.chipBad {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+.chipMuted {
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-width: 0;
+}
+.panelTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.mono {
+  font-family: var(--f-mono);
+  letter-spacing: 0;
+}
+
+/* ---------- Problem: key, holders, vault ---------- */
+.keyRow {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-height: 74px;
+}
+.keyLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.keyBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 40px;
+}
+.keyBow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  margin-right: 2px;
+}
+.keySeg {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.keySegGhost {
+  width: 56px;
+  height: 26px;
+  border-radius: 7px;
+  border: 1.5px dashed var(--ctl);
+}
+
+.holders {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.holder {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 18px 10px 16px;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1.5px solid transparent;
+  text-align: center;
+  transition:
+    border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+.holderOn {
+  border-color: var(--accent);
+  box-shadow: var(--pop);
+}
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.holderOn .avatar {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.holderName {
+  display: grid;
+  gap: 1px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.holderName span {
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.slot {
+  height: 26px;
+  display: grid;
+  place-items: center;
+}
+
+.vault {
+  justify-self: center;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.vaultLocked {
+  background: var(--bg);
+  color: var(--ink);
+}
+.vaultOpen {
+  background: var(--ok);
+  color: #fff;
+}
+
+/* ---------- Today ---------- */
+.today {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.todayCard {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 4px;
+}
+.todayCard strong {
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.todayCard span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* ---------- Teaching ---------- */
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.pipeArrow {
+  color: var(--ctl);
+  font-size: 0.85rem;
+}
+.gate {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--bg);
+  font-family: var(--f-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition:
+    opacity 0.3s,
+    background-color 0.3s;
+}
+.gateOn {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.gateOff {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: var(--bg);
+  gap: 2px;
+}
+.segmented button {
+  border: 0;
+  background: none;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--muted);
+  position: relative;
+}
+.segmented button[aria-pressed="true"] {
+  color: var(--accent-ink);
+}
+.segPill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent);
+  z-index: 0;
+}
+.segmented button > span:not(.segPill) {
+  position: relative;
+  z-index: 1;
+}
+
+.controlRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.shots {
+  display: grid;
+  gap: 6px;
+  min-height: 228px;
+  align-content: start;
+}
+.shot {
+  display: grid;
+  grid-template-columns: 54px repeat(3, minmax(0, 1fr)) 1.4fr;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 0.82rem;
+}
+.shotIdx {
+  color: var(--muted);
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+}
+.bitCell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+}
+.bit {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.bitOne {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.xor {
+  justify-self: end;
+  font-family: var(--f-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.stat {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 8px;
+}
+.statTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.statTop strong {
+  color: var(--ink);
+  font-family: var(--f-mono);
+}
+.meter {
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--faint);
+  overflow: hidden;
+}
+.meterFill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+/* ---------- HBB round table ---------- */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  font-size: 0.8rem;
+}
+.table th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 4px 4px;
+}
+.table td {
+  background: var(--bg);
+  padding: 6px 4px;
+  text-align: center;
+}
+.table td:first-child {
+  border-radius: 9px 0 0 9px;
+  font-family: var(--f-mono);
+  color: var(--muted);
+}
+.table td:last-child {
+  border-radius: 0 9px 9px 0;
+  text-align: right;
+  padding-right: 12px;
+}
+.basis {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: 0.76rem;
+  background: var(--card);
+  color: var(--ink);
+}
+.basisY {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.dropped td {
+  opacity: 0.45;
+}
+.keyStrip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.keyStrip > span:nth-child(odd) {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.bits {
+  display: flex;
+  gap: 3px;
+  min-height: 22px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Spy ---------- */
+.spyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.dots {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+.dotCell {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.verdict {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: var(--bg);
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.switchTrack {
+  width: 38px;
+  height: 22px;
+  border-radius: var(--r-pill);
+  background: var(--dim);
+  padding: 2px;
+  display: flex;
+  transition: background-color 0.25s;
+}
+.switchTrack[data-on="true"] {
+  background: var(--bad);
+  justify-content: flex-end;
+}
+.switchKnob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* ---------- Encrypt ---------- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+.divider {
+  width: 0;
+  border-left: 1.5px dashed var(--ctl);
+  position: relative;
+}
+.sideTitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.hexRow {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: var(--bg);
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+}
+.hexRow > span:first-child {
+  color: var(--muted);
+}
+.hex {
+  font-family: var(--f-mono);
+  font-size: 0.76rem;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.hexKey {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.hexKey > span:first-child,
+.hexKey .hex {
+  color: var(--accent-ink);
+}
+.flowCol {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.fileCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 0.82rem;
+}
+.fileIcon {
+  width: 28px;
+  height: 34px;
+  border-radius: 4px;
+  background: var(--card);
+  border: 1.5px solid var(--ctl);
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.aes {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--accent);
+  background: var(--bg);
+  text-align: center;
+}
+.aes strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+.aes span {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* ---------- Unlock ---------- */
+.toggles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.toggle {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  background: var(--bg);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 0.25s,
+    opacity 0.25s;
+}
+.toggle[aria-pressed="false"] {
+  opacity: 0.55;
+}
+.toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+}
+.toggle[aria-pressed="true"] .avatar {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.check {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.toggle[aria-pressed="true"] .check {
+  color: var(--accent);
+}
+.result {
+  border-radius: 14px;
+  padding: 14px 16px;
+  min-height: 132px;
+}
+.resultOk {
+  background: var(--ok-soft);
+}
+.resultBad {
+  background: var(--bad-soft);
+}
+.resultHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.rows {
+  display: grid;
+  gap: 4px;
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  color: var(--ink);
+}
+
+/* ---------- Compare ---------- */
+.tableWrap {
+  overflow-x: auto;
+  margin: 0 -4px;
+  padding: 0 4px;
+}
+.cmp {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8rem;
+}
+.cmp th,
+.cmp td {
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.cmp th {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.cmp td:first-child {
+  color: var(--muted);
+  font-size: 0.76rem;
+  width: 22%;
+}
+.cmp td {
+  color: var(--ink);
+}
+.qCol {
+  background: var(--accent-soft);
+}
+.cmp th.qCol {
+  color: var(--accent);
+  border-radius: 10px 10px 0 0;
+}
+.yes {
+  color: var(--ok);
+  font-weight: 600;
+}
+.no {
+  color: var(--bad);
+  font-weight: 600;
+}
+.honest {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.honest b {
+  color: var(--accent);
+}
+
+/* ---------- Extensions ---------- */
+.ext {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+}
+.extList {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.extItem {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink);
+  position: relative;
+}
+.extItem > * {
+  position: relative;
+  z-index: 1;
+}
+.extBg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--bg);
+  z-index: 0;
+  box-shadow: var(--pop);
+}
+.extLetter {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--faint);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.extActive .extLetter {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.size {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.extDetail {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.extDetail p {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.extDetail h3 {
+  font-size: 1.1rem;
+}
+
+/* ---------- Architecture ---------- */
+.arch {
+  display: grid;
+  gap: 0;
+  justify-items: stretch;
+}
+.layer {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: grid;
+  gap: 8px;
+}
+.layerHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.layerHead strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+.layerHead span {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.layerChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.layerChips span {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+}
+.connector {
+  position: relative;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+.connector::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1.5px dashed var(--ctl);
+}
+.connLabel {
+  position: relative;
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  background: var(--card);
+  padding: 0 8px;
+}
+.packet {
+  position: absolute;
+  left: calc(50% - 4px);
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .holders,
+  .toggles,
+  .today {
+    gap: 8px;
+  }
+  .holder {
+    padding: 14px 6px;
+  }
+  .holderName span {
+    display: none;
+  }
+  .today {
+    grid-template-columns: 1fr;
+  }
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .divider {
+    width: auto;
+    height: 0;
+    border-left: 0;
+    border-top: 1.5px dashed var(--ctl);
+  }
+  .spyGrid,
+  .ext,
+  .twoCol,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .shot {
+    grid-template-columns: 40px repeat(3, minmax(0, 1fr)) 1.2fr;
+    gap: 4px;
+    padding: 8px;
+  }
+  .keySeg,
+  .keySegGhost {
+    width: 44px;
+  }
+}
