@@ -1,0 +1,75 @@
+.wrap {
+  display: grid;
+  gap: 18px;
+}
+.eqRow {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  text-align: center;
+}
+.explain {
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.gone {
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+.gone b {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  color: var(--ink);
+}
+.eq {
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.shares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.share {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.who b {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+}
+.shareHex {
+  color: var(--ink);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  word-break: break-all;
+}
+.label {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+  font-size: calc(0.72rem * var(--label-scale));
+  color: var(--muted);
+}
+.who .label {
+  font-family: var(--f-mono);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}

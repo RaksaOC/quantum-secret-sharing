@@ -1,0 +1,157 @@
+.wrap {
+  display: grid;
+  gap: 16px;
+}
+.card {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+.head {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.head h3 {
+  font-size: 1.1rem;
+}
+.need {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.person {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1.5px dashed var(--ctl);
+  border-radius: 14px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.person span {
+  display: grid;
+  min-width: 0;
+}
+.person b {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+.person i {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.on {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--bg);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.hint {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.go {
+  height: 44px;
+}
+.combine {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 28px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.flow {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+.chip {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: 0 -6px;
+  border-radius: 50%;
+  color: #12201b;
+  font-weight: 700;
+  font-family: var(--f-display);
+}
+.verdict {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 18px 20px;
+  border-radius: var(--r-card);
+  border: 1px solid;
+}
+.verdict b {
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+.verdict p {
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.good {
+  border-color: color-mix(in srgb, var(--ok) 50%, transparent);
+  background: color-mix(in srgb, var(--ok) 10%, transparent);
+}
+.bad {
+  border-color: color-mix(in srgb, var(--bad) 55%, transparent);
+  background: color-mix(in srgb, var(--bad) 10%, transparent);
+}
+.fps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 16px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.fps code {
+  color: var(--ink);
+}
+.match,
+.miss {
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.match {
+  background: var(--ok);
+  color: #fff;
+}
+.miss {
+  background: var(--bad);
+  color: #fff;
+}
