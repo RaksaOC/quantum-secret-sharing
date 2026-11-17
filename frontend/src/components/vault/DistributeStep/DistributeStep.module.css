@@ -1,0 +1,124 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.stage,
+.panel {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+.stage {
+  padding: 28px 20px 18px;
+}
+.intro {
+  display: grid;
+  gap: 20px;
+}
+.facts {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.facts li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.facts li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.facts b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.go {
+  height: 46px;
+}
+.live {
+  display: grid;
+  gap: 16px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.stat {
+  display: grid;
+  padding: 10px 12px;
+  border-radius: var(--r-in);
+  background: var(--bg);
+}
+.stat span {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+  font-size: calc(0.7rem * var(--label-scale));
+  color: var(--muted);
+}
+.stat b {
+  font-family: var(--f-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.stat i {
+  font-style: normal;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.eq code {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.verdict {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: var(--r-in);
+  border: 1px solid;
+}
+.verdict b {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+.verdict p {
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.good {
+  border-color: color-mix(in srgb, var(--ok) 50%, transparent);
+  background: color-mix(in srgb, var(--ok) 10%, transparent);
+}
+.bad {
+  border-color: color-mix(in srgb, var(--bad) 55%, transparent);
+  background: color-mix(in srgb, var(--bad) 10%, transparent);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
