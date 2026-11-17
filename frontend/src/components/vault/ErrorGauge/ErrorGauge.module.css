@@ -1,0 +1,63 @@
+.gauge {
+  display: grid;
+  gap: 8px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.label {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+  font-size: calc(0.74rem * var(--label-scale));
+  color: var(--muted);
+}
+.top b {
+  font-family: var(--f-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.ok {
+  color: var(--ink);
+}
+.bad {
+  color: var(--bad);
+}
+.track {
+  position: relative;
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--faint);
+}
+.fillOk,
+.fillBad {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: var(--ok);
+}
+.fillBad {
+  background: var(--bad);
+}
+.line {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+.scale {
+  position: relative;
+  height: 16px;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.mark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}

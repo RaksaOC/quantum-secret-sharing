@@ -1,0 +1,9 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  color: #12201b;
+  font-weight: 700;
+  font-family: var(--f-display);
+}

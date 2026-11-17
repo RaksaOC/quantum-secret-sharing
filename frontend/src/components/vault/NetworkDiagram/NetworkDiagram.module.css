@@ -1,0 +1,68 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.link {
+  stroke: var(--line);
+  stroke-width: 2;
+  fill: none;
+}
+.linkTapped {
+  stroke: var(--bad);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  fill: none;
+}
+.qubit {
+  opacity: 0.95;
+}
+.dealer circle {
+  fill: var(--btn-bg);
+}
+.dealer .dealerBad {
+  fill: var(--bad);
+}
+.key {
+  fill: none;
+  stroke: var(--btn-ink);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.dealer text,
+.eve text {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: var(--f-body);
+}
+.eve circle:first-child {
+  fill: var(--bad);
+}
+.eye {
+  fill: #fff;
+}
+.pupil {
+  fill: #2a0d0d;
+}
+.eve text {
+  fill: var(--bad);
+  font-weight: 600;
+}
+.initial {
+  fill: #12201b;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: var(--f-display);
+}
+.name {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--f-body);
+}
+.role {
+  fill: var(--muted);
+  font-size: 12px;
+  font-family: var(--f-body);
+}
