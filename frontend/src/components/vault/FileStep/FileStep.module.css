@@ -1,0 +1,128 @@
+.wrap {
+  display: grid;
+  gap: 22px;
+}
+.drop {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: clamp(32px, 6vw, 56px) 20px;
+  border: 1.5px dashed var(--ctl);
+  border-radius: var(--r-card);
+  background: var(--card);
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.drop:hover,
+.drag {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent-soft) 40%, var(--card));
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+.drop strong {
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+.hint {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.picked {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+.meta b {
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.samples {
+  display: grid;
+  gap: 10px;
+}
+.label {
+  font-family: var(--f-label);
+  text-transform: var(--label-tt);
+  letter-spacing: var(--label-track);
+  font-size: calc(0.74rem * var(--label-scale));
+  color: var(--muted);
+  text-align: center;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.sample {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.sample:hover {
+  border-color: var(--ctl);
+  transform: translateY(-2px);
+}
+.sample span {
+  display: grid;
+  min-width: 0;
+}
+.sample b {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.sample i {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.78rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.bad {
+  border-color: var(--bad);
+}
+.error {
+  margin-top: 4px;
+  color: var(--bad);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
