@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Quantum Secret Sharing",
-  description: "N-party quantum secret sharing with GHZ states: a step-by-step tour.",
+  description: "Encrypt a PDF with AES-256-GCM and share its key between participants with GHZ-based quantum secret sharing.",
 };
 
 export const viewport: Viewport = {

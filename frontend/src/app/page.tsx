@@ -1,5 +1,5 @@
-import { Onboarding } from "@/components/onboarding/Onboarding";
+import { VaultApp } from "@/components/vault/VaultApp";
 
 export default function Home() {
-  return <Onboarding />;
+  return <VaultApp />;
 }
