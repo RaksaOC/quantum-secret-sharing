@@ -61,7 +61,7 @@ export function ProblemScene() {
           transition={{ duration: 0.3 }}
         >
           <LockIcon open={open} />
-          {open ? "All 3 present · backup restored" : delivered ? `Locked · ${present} of 3 present` : "One key, one person: too risky"}
+          {open ? "All 3 present · PDF unlocked" : delivered ? `Locked · ${present} of 3 present` : "One key, one person: too risky"}
         </motion.div>
       </AnimatePresence>
     </div>

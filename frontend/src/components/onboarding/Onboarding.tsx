@@ -2,27 +2,38 @@
 
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { STEPS } from "@/content/steps";
 import { SCENES } from "@/components/scenes";
-import { ApiStatus } from "@/components/ui/ApiStatus";
+import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cx } from "@/lib/cx";
 import styles from "./Onboarding.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export function Onboarding() {
+/** The tour. As a page at /tour, or (with onClose) as a centred dialog over the current page. */
+export function Onboarding({ onClose }: { onClose?: () => void } = {}) {
+  const dialog = !!onClose;
   // null until mounted: the hash (#spy) is only known in the browser, so the first client
   // render picks the right step instead of mounting the intro and animating away from it.
   const [index, setIndex] = useState<number | null>(null);
   useEffect(() => {
-    setIndex(Math.max(0, STEPS.findIndex((s) => `#${s.id}` === window.location.hash)));
-  }, []);
-  if (index === null) return <div style={{ minHeight: "100dvh" }} />;
-  return <Tour initial={index} />;
+    setIndex(
+      dialog
+        ? 0
+        : Math.max(
+            0,
+            STEPS.findIndex((s) => `#${s.id}` === window.location.hash),
+          ),
+    );
+  }, [dialog]);
+  if (index === null) return dialog ? null : <div style={{ minHeight: "100dvh" }} />;
+  return <Tour initial={index} onClose={onClose} />;
 }
 
-function Tour({ initial }: { initial: number }) {
+function Tour({ initial, onClose }: { initial: number; onClose?: () => void }) {
+  const dialog = !!onClose;
   const [index, setIndex] = useState(initial);
   const [direction, setDirection] = useState(1);
   const step = STEPS[index];
@@ -37,33 +48,59 @@ function Tour({ initial }: { initial: number }) {
     });
   }, []);
 
+  // the /tour page keeps the step in the URL (#rank); the dialog leaves the URL alone
   useEffect(() => {
+    if (dialog) return;
     history.replaceState(null, "", index === 0 ? window.location.pathname : `#${step.id}`);
-  }, [index, step.id]);
+  }, [dialog, index, step.id]);
+
+  // dialog: no page scrolling behind it
+  useEffect(() => {
+    if (!dialog) return;
+    const before = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = before;
+    };
+  }, [dialog]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLElement && e.target.closest("input, textarea, select")) return;
       if (e.key === "ArrowRight") go(index + 1);
       if (e.key === "ArrowLeft") go(index - 1);
+      if (e.key === "Escape") onClose?.();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [go, index]);
+  }, [go, index, onClose]);
 
-  return (
+  const tour = (
     <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease }}>
-      <div className={styles.shell}>
-        <header className={styles.header}>
-          <a className={styles.brand} href="#" onClick={(e) => (e.preventDefault(), go(0))}>
-            <BrandMark />
-            <span>Quantum Secret Sharing</span>
-          </a>
-          <div className={styles.headerRight}>
-            <ApiStatus />
-            <ThemeToggle />
+      <div className={cx(styles.shell, dialog && styles.inDialog)}>
+        {dialog ? (
+          <div className={styles.dialogHead}>
+            <span className={styles.dialogLabel}>How it works</span>
+            <button className={styles.dialogClose} onClick={onClose} aria-label="Close">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
           </div>
-        </header>
+        ) : (
+          <header className={styles.header}>
+            <a className={styles.brand} href="#" onClick={(e) => (e.preventDefault(), go(0))}>
+              <BrandMark />
+              <span>Quantum Secret Sharing</span>
+            </a>
+            <div className={styles.headerRight}>
+              <Link href="/" className={styles.appLink}>
+                Open the app
+              </Link>
+              <ThemeToggle />
+            </div>
+          </header>
+        )}
 
         <main className={styles.main}>
           <section className={styles.copy} aria-live="polite">
@@ -80,12 +117,7 @@ function Tour({ initial }: { initial: number }) {
                 <p className={styles.lead}>{step.lead}</p>
                 <ul className={styles.points}>
                   {step.points.map((point, i) => (
-                    <motion.li
-                      key={point}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 + i * 0.08 }}
-                    >
+                    <motion.li key={point} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.08 }}>
                       {point}
                     </motion.li>
                   ))}
@@ -124,9 +156,7 @@ function Tour({ initial }: { initial: number }) {
                 onClick={() => go(i)}
                 aria-current={i === index ? "step" : undefined}
               >
-                <span className={styles.railBar}>
-                  {i === index && <motion.span layoutId="rail-fill" className={styles.railFill} />}
-                </span>
+                <span className={styles.railBar}>{i === index && <motion.span layoutId="rail-fill" className={styles.railFill} />}</span>
                 <span className={styles.railLabel}>{s.label}</span>
               </button>
             ))}
@@ -138,13 +168,30 @@ function Tour({ initial }: { initial: number }) {
             <span className={styles.counter}>
               {String(index + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
             </span>
-            <button className={styles.primaryBtn} onClick={() => go(last ? 0 : index + 1)}>
-              {last ? "Start over" : index === 0 ? "Start the tour" : "Next"}
+            <button className={styles.primaryBtn} onClick={() => (last && dialog ? onClose?.() : go(last ? 0 : index + 1))}>
+              {last ? (dialog ? "Try it yourself" : "Start over") : index === 0 ? "Start the tour" : "Next"}
             </button>
           </div>
         </footer>
       </div>
     </MotionConfig>
+  );
+  if (!dialog) return tour;
+  return createPortal(
+    <motion.div className={styles.overlay} initial={{ opacity: 0 }} animate={{ opacity: 1 }} onClick={(e) => e.target === e.currentTarget && onClose?.()}>
+      <motion.div
+        className={styles.dialog}
+        role="dialog"
+        aria-modal="true"
+        aria-label="How it works"
+        initial={{ opacity: 0, y: 18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.35, ease }}
+      >
+        {tour}
+      </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
 

@@ -26,9 +26,9 @@ export interface Step {
 }
 
 export const HOLDERS = [
-  { name: "Maya", role: "Security Director", initials: "MS" },
-  { name: "Dara", role: "IT Administrator", initials: "DI" },
-  { name: "Lina", role: "Compliance Officer", initials: "LC" },
+  { name: "Alice", role: "Founder", initials: "A" },
+  { name: "Bob", role: "Founder", initials: "B" },
+  { name: "Charlie", role: "Founder", initials: "C" },
 ] as const;
 
 export const STEPS: Step[] = [
@@ -37,23 +37,23 @@ export const STEPS: Step[] = [
     label: "Welcome",
     eyebrow: "Team 6 · Quantum Computing capstone",
     title: "Quantum Secret Sharing",
-    lead: "Split one encryption key between N people using entangled qubits. Nobody can open the vault alone, and anyone who copies a share in transit gets caught.",
+    lead: "Encrypt a confidential PDF with AES-256-GCM, then share its key between the participants with GHZ-based quantum secret sharing. Nobody can open it alone, and anyone listening in during the hand-out gets caught.",
     points: [
-      "N-party quantum secret sharing on GHZ states (the HBB protocol)",
-      "Simulated with Qiskit Aer, then used for real AES-256-GCM encryption",
-      "This tour covers the idea, the protocol and what we will build",
+      "Research part: GHZ-based quantum secret sharing (the HBB protocol), simulated with Qiskit Aer",
+      "Practical part: a vault that locks and unlocks real PDF files",
+      "Classical: upload, encrypt, reconstruct, unlock. Quantum: distributing the key",
     ],
   },
   {
     id: "problem",
     label: "Scenario",
     eyebrow: "The scenario",
-    title: "A backup nobody can restore alone",
-    lead: "The company's payroll database backup is encrypted. Its key must never be held by one person, so it is split between three people.",
+    title: "A document nobody can open alone",
+    lead: "The board minutes, an acquisition contract, the salary report: some PDFs should only open when all three founders agree. So the key is never held by one person.",
     points: [
-      "One or two of them: the vault stays locked",
-      "All three together: the backup can be restored",
-      "The same rule works for N department heads",
+      "One or two founders: the PDF stays locked",
+      "All three together: the PDF opens",
+      "The same rule extends to N participants, or any k of them (Shamir)",
     ],
   },
   {
@@ -123,8 +123,8 @@ export const STEPS: Step[] = [
     id: "encrypt",
     label: "Encrypt",
     eyebrow: "Leaving the quantum world",
-    title: "The key encrypts a real file",
-    lead: "The quantum part ends with an ordinary classical key. The dealer encrypts the backup with AES-256-GCM, and the encrypted file can be stored anywhere.",
+    title: "The key encrypts the PDF",
+    lead: "The PDF is locked with an ordinary 256-bit key K using AES-256-GCM, and the encrypted file can be stored anywhere. The quantum part is how K's shares reach the participants.",
     points: [
       "K = k₁ ⊕ k₂ ⊕ k₃",
       "Quantum protects how the key is split and handed out",
@@ -136,7 +136,7 @@ export const STEPS: Step[] = [
     label: "Unlock",
     eyebrow: "Unlock",
     title: "Everyone, or nothing",
-    lead: "To restore the backup, the holders combine their shares. With everyone present the key is exact and the file decrypts. If anyone is missing, AES-GCM's integrity check rejects it.",
+    lead: "To open the PDF, the participants combine their shares. With everyone present the key is exact and the file decrypts. If anyone is missing, AES-GCM's integrity check rejects it.",
     points: [
       "A wrong key never decrypts to garbage: the tag check fails",
       "Nobody, including the dealer after setup, needs to keep K",

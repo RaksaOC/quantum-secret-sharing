@@ -43,12 +43,12 @@ export function EncryptScene() {
             CLASSICAL PART · real crypto
           </div>
           <motion.div className={s.fileCard} animate={{ ...show(0), x: phase === 2 ? [0, 6, 0] : 0 }}>
-            <span className={s.fileIcon}>SQL</span>
+            <span className={s.fileIcon}>PDF</span>
             <span>
-              <b style={{ color: "var(--ink)" }}>payroll_backup.sql</b>
+              <b style={{ color: "var(--ink)" }}>board-minutes.pdf</b>
               <br />
               <span className={s.mono} style={{ fontSize: "0.7rem", color: "var(--muted)" }}>
-                INSERT INTO payroll VALUES (1042, …
+                %PDF-1.4 · Board meeting minutes …
               </span>
             </span>
           </motion.div>
@@ -58,7 +58,7 @@ export function EncryptScene() {
           </motion.div>
           <motion.div className={s.panel} style={{ padding: "10px 12px" }} animate={show(3)}>
             <div className={s.panelTitle} style={{ marginBottom: 6 }}>
-              payroll_backup.sql.enc
+              board-minutes.pdf.locked
             </div>
             <div className={s.hex} style={{ color: "var(--muted)" }}>
               {CIPHERTEXT.map((b, i) => (

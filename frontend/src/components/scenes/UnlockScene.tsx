@@ -57,7 +57,7 @@ export function UnlockScene() {
         {ok ? (
           <motion.div key="ok" className={cx(s.result, s.resultOk)} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
             <div className={s.resultHead} style={{ color: "var(--ok)" }}>
-              <CheckIcon /> Tag verified · backup decrypted
+              <CheckIcon /> Tag verified · PDF decrypted
             </div>
             <div className={s.rows}>
               {PLAINTEXT.map((row, i) => (
@@ -80,7 +80,7 @@ export function UnlockScene() {
               <AlertIcon /> InvalidTag: authentication failed
             </div>
             <p style={{ fontSize: "0.84rem", color: "var(--ink)" }}>
-              {3 - count} share{3 - count === 1 ? " is" : "s are"} missing, so the key is wrong. AES-GCM refuses to decrypt instead of returning garbage. The backup stays sealed.
+              {3 - count} share{3 - count === 1 ? " is" : "s are"} missing, so the key is wrong. AES-GCM refuses to decrypt instead of returning garbage. The PDF stays locked.
             </p>
           </motion.div>
         )}
